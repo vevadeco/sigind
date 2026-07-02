@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --bg: #2a2a2a;
+  --panel: #333333;
+  --border: #4a4a4a;
+  --lime: #32cd32;
+  --lime-bright: #7fff00;
+  --lime-muted: #9bdc9b;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--lime);
+}
+
+@layer components {
+  .app-panel {
+    @apply rounded-xl border border-terminal-border bg-terminal-panel;
+  }
+
+  .app-input {
+    @apply w-full rounded-lg border border-terminal-border bg-terminal-bg px-4 py-3 text-terminal-lime placeholder:text-terminal-muted focus:border-terminal-lime;
+  }
+
+  .app-btn {
+    @apply rounded-lg border border-terminal-lime px-4 py-2 font-medium text-terminal-lime transition hover:bg-terminal-lime hover:text-terminal-bg;
+  }
+
+  .app-btn-primary {
+    @apply rounded-lg bg-terminal-lime px-4 py-2 font-semibold text-terminal-bg transition hover:bg-terminal-lime-bright disabled:opacity-50;
+  }
+
+  .app-link {
+    @apply rounded-lg border border-terminal-border px-4 py-2 text-terminal-lime transition hover:border-terminal-lime hover:text-terminal-lime-bright;
+  }
+
+  .app-muted {
+    @apply text-terminal-muted;
+  }
+
+  .app-error {
+    @apply text-red-400;
+  }
+}
+
+input,
+button {
+  @apply outline-none;
+}
+
+input[type="file"]::file-selector-button {
+  @apply mr-3 rounded border border-terminal-lime bg-terminal-bg px-3 py-1 text-terminal-lime;
+}
+
+table {
+  @apply text-terminal-lime;
+}
+
+th {
+  @apply text-terminal-lime-bright;
+}
+
+td,
+th {
+  @apply border-terminal-border;
+}
+
+a {
+  @apply text-terminal-lime;
+}
