@@ -1,5 +1,6 @@
 import Link from "next/link";
 import AppNav from "@/components/app-nav";
+import ManualScanButton from "@/components/manual-scan-button";
 
 export default function Home() {
   return (
@@ -16,13 +17,14 @@ export default function Home() {
         alerts, and a manual chart analyzer powered by Claude Vision. Data is stored in Neon
         PostgreSQL.
       </p>
-      <div className="mt-10 flex flex-wrap gap-4">
+      <div className="mt-10 flex flex-wrap items-start gap-4">
         <Link href="/dashboard" className="app-btn-primary px-5 py-3">
           Open Dashboard
         </Link>
         <Link href="/analyzer" className="app-link px-5 py-3">
           Chart Analyzer
         </Link>
+        <ManualScanButton compact />
       </div>
     </main>
   );

@@ -1,4 +1,4 @@
-import { getCronInterval, loadConfig, validateRequiredEnv } from "./config";
+import { getCronInterval, loadConfig, validateScannerEnv } from "./config";
 import { findByCronInterval, findDuplicates, insertSignal } from "./db/signals";
 import { fetchKlines } from "./market-data";
 import { calculateIndicators } from "./indicators";
@@ -26,7 +26,7 @@ interface Candidate extends ScoredSymbol {
 }
 
 export async function runScanner(cronInterval = getCronInterval()): Promise<ScannerResult> {
-  const missing = validateRequiredEnv();
+  const missing = validateScannerEnv();
   if (missing.length > 0) {
     throw new Error(`Missing required environment variables: ${missing.join(", ")}`);
   }

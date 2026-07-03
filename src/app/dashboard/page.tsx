@@ -1,5 +1,6 @@
 import Link from "next/link";
 import AppNav from "@/components/app-nav";
+import ManualScanButton from "@/components/manual-scan-button";
 import { queryForDashboard } from "@/lib/db/signals";
 
 interface DashboardPageProps {
@@ -40,6 +41,8 @@ export default async function DashboardPage({ searchParams }: DashboardPageProps
         </div>
         <AppNav current="dashboard" />
       </header>
+
+      <ManualScanButton />
 
       <form method="get" action="/dashboard" className="mb-6 flex flex-wrap gap-3">
         <input

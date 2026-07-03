@@ -65,19 +65,18 @@ function parseWatchlist(value: unknown): string[] {
   return symbols;
 }
 
-export function validateRequiredEnv(): string[] {
-  const required = [
-    "MEXC_API_KEY",
-    "MEXC_API_SECRET",
-    "CRON_SECRET",
-    "ANTHROPIC_API_KEY",
-    "APP_USERNAME",
-    "APP_PASSWORD",
-  ];
+export function validateScannerEnv(): string[] {
+  const required = ["MEXC_API_KEY", "MEXC_API_SECRET"];
   const missing = required.filter((key) => !process.env[key]?.trim());
   if (!process.env.DATABASE_URL?.trim() && !process.env.POSTGRES_URL?.trim()) {
     missing.push("DATABASE_URL");
   }
+  return missing;
+}
+
+export function validateRequiredEnv(): string[] {
+  const missing = validateScannerEnv();
+  if (!process.env.CRON_SECRET?.trim()) missing.push("CRON_SECRET");
   return missing;
 }
 
