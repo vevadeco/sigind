@@ -1,3 +1,4 @@
+import { VevadeFooter } from "@/components/VevadeFooter";
 import type { Metadata } from "next";
 import "./globals.css";
 
@@ -13,7 +14,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="min-h-screen bg-terminal-bg text-terminal-lime antialiased">{children}</body>
+      <body className="flex min-h-screen flex-col bg-terminal-bg text-terminal-lime antialiased">
+        {children}
+        <VevadeFooter />
+      </body>
     </html>
   );
 }
